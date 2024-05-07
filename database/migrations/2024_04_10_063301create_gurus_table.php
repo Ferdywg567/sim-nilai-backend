@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('gurus', function (Blueprint $table) {
             $table->id();
             $table->foreignId('study_class_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->string('name');
             $table->string('gender');
             $table->string('address');
             $table->string('phone');
             $table->string('email');
-            $table->string('nrg', 12);
+            $table->string('nip', 12);
             $table->string('pob');
             $table->dateTime('dob');
             $table->timestamps();

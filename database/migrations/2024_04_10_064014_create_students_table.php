@@ -23,6 +23,10 @@ return new class extends Migration
             $table->dateTime('dob');
             $table->timestamps();
         });
+
+        Schema::table('p5_project_achievements', function (Blueprint $table) {
+            $table->foreignId('student_id')->constrained()->cascadeOnDelete();
+        });
     }
 
     /**
@@ -31,5 +35,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('students');
+
+        Schema::table('p5_project_achievements', function (Blueprint $table) {
+            $table->dropColumn('student_id');
+        });
     }
 };

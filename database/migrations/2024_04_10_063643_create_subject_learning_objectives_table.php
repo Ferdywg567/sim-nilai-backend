@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('phase');
             $table->unsignedInteger('grade'); // tingkat / kelas
             $table->unsignedInteger('semester'); // 1 / 2
-            $table->string('desc');
+            $table->longText('desc');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

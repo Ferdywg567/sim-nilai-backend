@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('subject_basic_competencies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('subject_id')->constrained()->cascadeOnDelete();
+            $table->string('code');
+            $table->longText('description');
+            $table->string('curriculum_year');
             $table->timestamps();
         });
     }

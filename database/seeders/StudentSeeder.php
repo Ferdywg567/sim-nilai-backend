@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -35,5 +36,7 @@ class StudentSeeder extends Seeder
                 'gender'         => 'L',
             ]
         ];
+
+        Student::insert($datas);
     }
 }

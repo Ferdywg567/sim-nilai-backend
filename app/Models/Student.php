@@ -14,4 +14,14 @@ class Student extends Model
     protected $casts = [
         'dob' => 'datetime'
     ];
+
+    /**
+     * Get the studyClass that owns the Student
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function studyClass()
+    {
+        return $this->belongsTo(StudyClass::class, 'study_class_id', 'id');
+    }
 }

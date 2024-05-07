@@ -376,7 +376,7 @@ class P5Seeder extends Seeder
         foreach ($dimensions as $dimension) {
             $elements = $dimension['elements'];
 
-            unset($dimension['$elements']);
+            unset($dimension['elements']);
 
             $p5_dimension = P5Dimension::create($dimension);
 
@@ -388,9 +388,9 @@ class P5Seeder extends Seeder
                 $p5_element = $p5_dimension->elements()->create($element);
 
                 foreach ($subelements as $sub) {
-                    $phases = $element['phases'];
+                    $phases = $sub['phases'];
 
-                    unset($element['phases']);
+                    unset($sub['phases']);
 
                     $p5_subelement = $p5_element->subs()->create($sub);
 

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('p5_projects', function (Blueprint $table) {
             $table->id();
+            $table->string('phase');
+            $table->string('code');
+            $table->string('name');
+            $table->longText('description');
             $table->timestamps();
         });
     }

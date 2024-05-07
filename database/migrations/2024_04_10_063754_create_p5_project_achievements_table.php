@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('p5_project_achievements', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('predicate');
             $table->timestamps();
         });
     }

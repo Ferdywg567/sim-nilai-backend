@@ -14,6 +14,7 @@ class LearningObjectiveSeeder extends Seeder
     public function run(): void
     {
         $datas = [
+            //* Matematika
             [
                 'subject_id' => 1,
                 'phase'      => 'E',
@@ -42,10 +43,38 @@ class LearningObjectiveSeeder extends Seeder
                 'semester'   => 1,
                 'desc'       => 'mengidentifikasi dan menggambar berbagai jaring-jaring bangun ruang sederhana',
             ],
+
+            //* Bahasa Indonesia
+            [
+                'subject_id' => 2,
+                'phase'      => 'E',
+                'grade'      => 10,
+                'semester'   => 1,
+                'desc'       => 'Mensyukuri anugerah Tuhan akan keberadaan bahasa Indonesia dan menggunakannnya sesuai dengan kaidah dan konteks untuk mempersatukan bangsa',
+            ],
+            [
+                'subject_id' => 2,
+                'phase'      => 'E',
+                'grade'      => 10,
+                'semester'   => 1,
+                'desc'       => 'Mensyukuri anugerah Tuhan akan keberadaan bahasa Indonesia dan menggunakannya sebagai sarana komunikasi dalam memahami, menerapkan, dan menganalisis informasi lisan dan tulis melalui teks anekdot, eksposisi, laporan hasil observasi, prosedur kompleks, dan negosiasi',
+            ],
+            [
+                'subject_id' => 2,
+                'phase'      => 'E',
+                'grade'      => 10,
+                'semester'   => 1,
+                'desc'       => 'Mensyukuri anugerah Tuhan akan keberadaan bahasa Indonesia dan menggunakannya sebagai sarana komunikasi dalam mengolah, menalar, dan menyajikan  informasi lisan dan tulis melalui teks anekdot, eksposisi, laporan hasil observasi, prosedur kompleks, dan negosiasi ',
+            ],
+            [
+                'subject_id' => 2,
+                'phase'      => 'E',
+                'grade'      => 10,
+                'semester'   => 1,
+                'desc'       => 'Menunjukkan sikap tanggung jawab, peduli, responsif, dan santun dalam menggunakan bahasa Indonesia untuk membuat anekdot mengenai permasalahan sosial, lingkungan, dan kebijakan publik',
+            ],
         ];
 
-        foreach ($datas as $key => $value) {
-            SubjectLearningObjective::create($value);
-        }
+        SubjectLearningObjective::insert($datas);
     }
 }

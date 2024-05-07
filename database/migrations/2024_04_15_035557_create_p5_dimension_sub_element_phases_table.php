@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('p5_dimension_sub_element_phases', function (Blueprint $table) {
             $table->id();
+            $table->longText('description');
+            $table->string('phase');
+            $table->foreignId('subelement_id')->constrained('p5_dimension_sub_elements')->cascadeOnDelete();
             $table->timestamps();
         });
     }

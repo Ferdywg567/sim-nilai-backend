@@ -34,7 +34,7 @@ class AuthController extends BaseController
         return $this->sendSuccess("Berhasil Logout Dari Sistem!");
     }
 
-    public function getUser() {
+    public function getUserProfile() {
         $data = [
             'user' => Auth::user()
         ];
