@@ -12,7 +12,7 @@ class P5ProjectController extends BaseController
     {
         $projects = P5Project::all();
 
-        return $this->sendResponse($projects, "List Proyek P5 $this->found_msg");
+        return $this->sendResponse($projects->toArray(), "List Proyek P5 $this->found_msg");
     }
 
     function store(P5ProjectRequest $request)
