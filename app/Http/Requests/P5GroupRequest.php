@@ -2,11 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\P5Project;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class P5ProjectRequest extends FormRequest
+class P5GroupRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,21 +22,19 @@ class P5ProjectRequest extends FormRequest
      */
     public function rules(): array
     {
-        $rules =  [
-            'name'        => ['required', 'string'],
-            'code'        => ['required', 'string'],
-            'phase'       => ['required', 'string'],
-            'description' => ['required', 'string'],
+        $rules = [
+            'name'    => ['required', 'string'],
+            'grade'   => ['required', 'string'],
+            'phase'   => ['required', 'string'],
+            'guru_id' => ['required', 'exists:gurus,id'],
         ];
 
         if (in_array($this->method(), ['PUT', 'PATCH'])) {
-            $project = $this->route('p5_project');
+            $project = $this->route('p5_group');
 
-            $rules['name'][] = Rule::unique('p5_projects')->ignore($project);
-            $rules['code'][] = Rule::unique('p5_projects')->ignore($project);
+            $rules['name'][] = Rule::unique('p5_groups')->ignore($project);
         }
 
         return $rules;
-
     }
 }

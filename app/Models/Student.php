@@ -24,4 +24,15 @@ class Student extends Model
     {
         return $this->belongsTo(StudyClass::class, 'study_class_id', 'id');
     }
+
+    /**
+     * Get all of the p5Groups for the Student
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsToMany
+     */
+    public function p5Groups()
+    {
+        // return $this->belongsToMany(P5Group::class, P5GroupStudent::class, 'student_id', 'student_id', '');
+        return $this->belongsToMany(P5Group::class);
+    }
 }

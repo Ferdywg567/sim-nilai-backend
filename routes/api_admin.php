@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\P5GroupController;
 use App\Http\Controllers\P5ProjectController;
 use App\Http\Controllers\StudyClassController;
 use App\Http\Controllers\SubjectController;
@@ -32,6 +33,19 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
         Route::get('/', [StudyClassController::class, 'index']);
     });
 
+    Route::group(['prefix' => 'p5-groups', 'as' => 'p5-groups.'], function () {
+        // Route::post('/{p5_group}/coordinator/{guru}', [P5GroupController::class, 'setCoordinator']);
+        Route::post('/{p5_group}/students/{student}', [P5GroupController::class, 'addStudent']);
+        Route::post('/{p5_group}/class/{class}', [P5GroupController::class, 'addStudentsFromClass']);
+
+        Route::group(['prefix' => '{p5_group}/projects', 'as' => 'projects.'], function () {
+            Route::get('/', [P5GroupController::class, 'getProjects']);
+            Route::post('/{p5_project}', [P5GroupController::class, 'addProject']);
+            Route::delete('/{p5_project}', [P5GroupController::class, 'deleteProject']);
+        });
+    });
+
 
     Route::apiResource('p5-projects', P5ProjectController::class);
+    Route::apiResource('p5-groups', P5GroupController::class);
 });

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Guru;
+use App\Models\P5Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

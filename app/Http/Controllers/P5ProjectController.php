@@ -40,7 +40,7 @@ class P5ProjectController extends BaseController
     }
 
     function getProfileAchievementsOptions($phase) {
-        $dimensions = P5Dimension::with('elements.dimensions.subs')->get();
+        $dimensions = P5Dimension::with('elements.subs.phases')->get();
 
         return $this->sendResponse($dimensions->toArray(), "List Capaian Profil Proyek P5 $this->found_msg");
     }

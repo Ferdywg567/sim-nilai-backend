@@ -12,6 +12,7 @@ class BaseController extends Controller
     public $notfound_msg = "Terkait Tidak Ditemukan Di Database...";
     public $saved_msg    = "Terkait Berhasil Disimpan!";
     public $deleted_msg  = "Terkait Berhasil Dihapus!";
+    public $added_msg  = "Terkait Berhasil Ditambahkan!";
 
     /**
      * success response method.
@@ -46,9 +47,7 @@ class BaseController extends Controller
             'message' => $message,
         ];
 
-        if ($data != null) {
-            $response['data'] = $data;
-        }
+        $response['data'] = $data ?? [];
 
         return response()->json($response, $code);
     }
