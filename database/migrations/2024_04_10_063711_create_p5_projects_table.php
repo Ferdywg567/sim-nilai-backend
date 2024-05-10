@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('p5_projects', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('p5_theme_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+            // $table->foreignId('p5_theme_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->string('phase');
             $table->string('code');
             $table->string('name');

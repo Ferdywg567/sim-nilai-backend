@@ -14,9 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('p5_project_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('p5_group_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('subelement_id')->constrained('p5_dimension_sub_elements')->cascadeOnDelete();
-            $table->foreignId('student_id')->constrained()->cascadeOnDelete();
             $table->string('predicate');
             $table->timestamps();
 

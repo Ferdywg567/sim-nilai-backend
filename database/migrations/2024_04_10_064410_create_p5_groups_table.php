@@ -19,6 +19,11 @@ return new class extends Migration
             $table->string('phase');
             $table->timestamps();
         });
+
+        Schema::table('p5_project_achievements', function (Blueprint $table) {
+            $table->foreignId('p5_group_id')->constrained()->cascadeOnDelete();
+        });
+
     }
 
     /**
@@ -27,5 +32,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('p5_groups');
+
+        Schema::table('p5_project_achievements', function (Blueprint $table) {
+            $table->dropColumn('p5_group_id');
+        });
     }
 };

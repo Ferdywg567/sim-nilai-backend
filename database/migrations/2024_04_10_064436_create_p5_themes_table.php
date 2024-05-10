@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::table('p5_projects', function (Blueprint $table) {
+            $table->foreignId('p5_theme_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
+        });
+
     }
 
     /**
@@ -24,5 +29,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('p5_themes');
+
+        Schema::table('p5_projects', function (Blueprint $table) {
+            $table->dropColumn('p5_theme_id');
+        });
     }
 };
