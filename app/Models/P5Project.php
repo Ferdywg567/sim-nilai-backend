@@ -22,18 +22,22 @@ class P5Project extends Model
     }
 
     /**
-     * Get the coordinator that owns the P5Project
+     * Get all of the targets for the P5Project
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function coordinator()
+    public function targets()
     {
-        return $this->belongsTo(Guru::class, 'guru_id', 'id');
+        return $this->hasMany(P5ProjectTargetProfileAchievement::class, 'project_id', 'id');
     }
 
-    function setCoordinator(Guru $guru) {
-        $this->guru_id = $guru->id;
-
-        $this->save();
+    /**
+     * The phases that belong to the P5Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function phases()
+    {
+        return $this->belongsToMany(P5DimensionSubElementPhase::class, P5ProjectTargetProfileAchievement::class, 'p5_project_id', 'p5_phase_id');
     }
 }

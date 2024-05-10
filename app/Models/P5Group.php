@@ -40,4 +40,11 @@ class P5Group extends Model
     {
         return $this->belongsToMany(P5Project::class);
     }
+
+    function setCoordinator(Guru $guru)
+    {
+        $this->guru_id = $guru->id;
+
+        $this->save();
+    }
 }

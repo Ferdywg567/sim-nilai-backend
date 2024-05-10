@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class P5Grade extends Model
+class P5GradeNote extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
 }

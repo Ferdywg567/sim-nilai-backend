@@ -13,9 +13,6 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
     Route::group(['prefix' => 'p5-dimensions', 'as' => 'p5-dimension.'], function () {
         Route::get('/', [P5DimensionController::class, 'getDimensions']);
     });
-    // Route::group(['prefix' => 'p5-projects', 'as' => 'p5-project.'], function () {
-    //     Route::get('achievements/{phase}', [P5ProjectController::class, 'getProfileAchievementsOptions']);
-    // });
 
     Route::group(['prefix' => 'gurus', 'as' => 'gurus.'], function () {
         Route::get('/', [GuruController::class, 'index']);
@@ -43,13 +40,18 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
         Route::post('/{p5_group}/class/{class}', [P5GroupController::class, 'addStudentsFromClass']);
 
         Route::group(['prefix' => '{p5_group}/projects', 'as' => 'projects.'], function () {
-            Route::get('/', [P5GroupController::class, 'getProjects']);
+            // Route::get('/', [P5GroupController::class, 'getProjects']); // already on global
             Route::post('/{p5_project}', [P5GroupController::class, 'addProject']);
             Route::delete('/{p5_project}', [P5GroupController::class, 'deleteProject']);
         });
     });
 
+    Route::group(['prefix' => 'p5-projects', 'as' => 'p5-project.'], function () {
+        Route::post('/{p5_project}/subelement/{subelement}', [P5ProjectController::class, 'addTargetsFromSubelement']);
+        Route::delete('/{p5_project}/subelement/{subelement}', [P5ProjectController::class, 'deleteTargetsBySubelement']);
+    });
+
 
     Route::apiResource('p5-projects', P5ProjectController::class);
-    Route::apiResource('p5-groups', P5GroupController::class);
+    Route::apiResource('p5-groups', P5GroupController::class)->except('index', 'show'); // already on global
 });

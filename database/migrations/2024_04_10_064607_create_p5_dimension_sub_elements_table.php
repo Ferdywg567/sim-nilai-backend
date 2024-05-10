@@ -17,6 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        Schema::table('p5_project_achievements', function (Blueprint $table) {
+            $table->foreignId('subelement_id')->constrained('p5_dimension_sub_elements')->cascadeOnDelete();
+        });
+
     }
 
     /**
@@ -25,5 +30,9 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('p5_dimension_sub_elements');
+
+        Schema::table('p5_project_achievements', function (Blueprint $table) {
+            $table->dropColumn('subelement_id');
+        });
     }
 };

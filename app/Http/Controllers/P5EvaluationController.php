@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Validator;
 
 class P5EvaluationController extends BaseController
 {
-    function storeProjectAchievements(Request $request) {
+    function storeGrades(Request $request) {
         $rules = [
-            'student_ids' => 'required'
+            'user_id'       => ['required', 'exists:users,id'],
+            'subelement_id' => ['required', 'exists:p5_dimension_sub_elements,id'],
+            'student_ids'   => ['required', 'array', 'min:1'],
+            'predicates'    => ['required', 'array', 'min:1'],
+            'student_ids.*' => ['required', 'string'],
+            'predicates.*'  => ['required', 'string'],
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -18,4 +23,6 @@ class P5EvaluationController extends BaseController
             return $this->sendError('Maaf, Input Tidak sesuai Ketentuan', $validator->errors()->getMessages());
         }
     }
+
+
 }

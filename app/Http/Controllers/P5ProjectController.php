@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\P5ProjectRequest;
 use App\Models\P5Dimension;
+use App\Models\P5DimensionSubElement;
 use App\Models\P5Project;
 
 class P5ProjectController extends BaseController
@@ -39,9 +40,25 @@ class P5ProjectController extends BaseController
         return $this->sendSuccess("Data Proyek P5 $this->deleted_msg");
     }
 
-    // function getProfileAchievementsOptions($phase) {
-    //     $dimensions = P5Dimension::with('elements.subs.phases')->get();
+    function addTargetsFromSubelement(P5Project $p5_project, P5DimensionSubElement $subelement)
+    {
+        $phases = $subelement->phases;
+        $p5_project = $p5_project->load('phases');
 
-    //     return $this->sendResponse($dimensions->toArray(), "List Capaian Profil Proyek P5 $this->found_msg");
-    // }
+        foreach ($phases as $phase) {
+            if (!$p5_project->phases->contains($phase)) {
+                $p5_project->phases()->attach($phase);
+            }
+        }
+
+        return $this->sendResponse($p5_project->load('phases')->toArray(), "Target Capaian Profil $this->added_msg");
+    }
+
+    function deleteTargetsBySubelement(P5Project $p5_project, P5DimensionSubElement $subelement)
+    {
+        $phases = $subelement->phases;
+        $p5_project->phases()->detach($phases);
+
+        return $this->sendResponse($p5_project->load('phases')->toArray(), "Target Capaian Profil $this->deleted_msg");
+    }
 }
