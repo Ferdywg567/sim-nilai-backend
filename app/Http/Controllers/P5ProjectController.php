@@ -11,7 +11,7 @@ class P5ProjectController extends BaseController
 {
     function index()
     {
-        $projects = P5Project::all();
+        $projects = P5Project::with('themes')->get();
 
         return $this->sendResponse($projects->toArray(), "List Proyek P5 $this->found_msg");
     }

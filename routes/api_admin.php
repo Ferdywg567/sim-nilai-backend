@@ -4,6 +4,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\P5DimensionController;
 use App\Http\Controllers\P5GroupController;
 use App\Http\Controllers\P5ProjectController;
+use App\Http\Controllers\P5ThemeController;
 use App\Http\Controllers\StudyClassController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectLearningObjectiveController;
@@ -53,5 +54,6 @@ Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
 
 
     Route::apiResource('p5-projects', P5ProjectController::class);
+    Route::apiResource('p5-themes', P5ThemeController::class);
     Route::apiResource('p5-groups', P5GroupController::class)->except('index', 'show'); // already on global
 });
