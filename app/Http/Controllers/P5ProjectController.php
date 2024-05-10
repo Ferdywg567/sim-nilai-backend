@@ -39,9 +39,9 @@ class P5ProjectController extends BaseController
         return $this->sendSuccess("Data Proyek P5 $this->deleted_msg");
     }
 
-    function getProfileAchievementsOptions($phase) {
-        $dimensions = P5Dimension::with('elements.subs.phases')->get();
+    // function getProfileAchievementsOptions($phase) {
+    //     $dimensions = P5Dimension::with('elements.subs.phases')->get();
 
-        return $this->sendResponse($dimensions->toArray(), "List Capaian Profil Proyek P5 $this->found_msg");
-    }
+    //     return $this->sendResponse($dimensions->toArray(), "List Capaian Profil Proyek P5 $this->found_msg");
+    // }
 }

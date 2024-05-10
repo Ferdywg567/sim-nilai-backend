@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\P5DimensionController;
 use App\Http\Controllers\P5GroupController;
 use App\Http\Controllers\P5ProjectController;
 use App\Http\Controllers\StudyClassController;
@@ -9,9 +10,12 @@ use App\Http\Controllers\SubjectLearningObjectiveController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
-    Route::group(['prefix' => 'p5-projects', 'as' => 'p5-project.'], function () {
-        Route::get('achievements/{phase}', [P5ProjectController::class, 'getProfileAchievementsOptions']);
+    Route::group(['prefix' => 'p5-dimensions', 'as' => 'p5-dimension.'], function () {
+        Route::get('/', [P5DimensionController::class, 'getDimensions']);
     });
+    // Route::group(['prefix' => 'p5-projects', 'as' => 'p5-project.'], function () {
+    //     Route::get('achievements/{phase}', [P5ProjectController::class, 'getProfileAchievementsOptions']);
+    // });
 
     Route::group(['prefix' => 'gurus', 'as' => 'gurus.'], function () {
         Route::get('/', [GuruController::class, 'index']);
