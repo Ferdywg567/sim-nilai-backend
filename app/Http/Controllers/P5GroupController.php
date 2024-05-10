@@ -16,10 +16,10 @@ class P5GroupController extends BaseController
 {
     function index()
     {
-        $groups = P5Group::with('students', 'coordinator', 'projects');
+        $groups = P5Group::with('students', 'coordinator', 'projects.theme');
 
-        if(Auth::user()->role_id == 2) { // guru
-            $groups->where('guru_id',Auth::id());
+        if (Auth::user()->role_id == 2) { // guru
+            $groups->where('guru_id', Auth::id());
         }
 
         return $this->sendResponse($groups->get()->toArray(), "List Kelompok P5 $this->found_msg");
@@ -100,18 +100,17 @@ class P5GroupController extends BaseController
         return $this->sendResponse($p5_group->load('students')->toArray(), "Siswa dari kelas $class->name telah ditambahkan ke kelompok!");
     }
 
-    // function setCoordinator(Guru $guru, P5Group $p5_group)
-    // {
+    function getStudents(P5Group $p5_group)
+    {
+        $students = $p5_group->students;
 
-    //     $p5_group->load('coordinator');
+        return $this->sendResponse($students->toArray(), "List data siswa untuk kelompok $this->found_msg");
+    }
 
-    //     if ($p5_group->guru_id) {
-    //         return $this->sendResponse($p5_group->toArray(), "Maaf, sudah menjadi Coordinator!");
-    //     }
+    function deleteStudent(P5Group $p5_group, Student $student) {
+        $p5_group->students()->detach($student);
 
-    //     $p5_group->setCoordinator($guru);
-
-    //     return $this->sendResponse($p5_group->toArray(), "Guru berhasil di pilih sebagai Coordinator!");
-    // }
+        return $this->sendSuccess("Siswa Terkait telah dikeluarkan dari kelompok!");
+    }
 
 }

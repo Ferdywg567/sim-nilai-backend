@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Http\Requests\P5ProjectRequest;
 use App\Models\P5Dimension;
 use App\Models\P5DimensionSubElement;
+use App\Models\P5DimensionSubElementPhase;
 use App\Models\P5Project;
 
 class P5ProjectController extends BaseController
 {
     function index()
     {
-        $projects = P5Project::with('themes')->get();
+        $projects = P5Project::with('theme', 'phases.subElement.element.dimension')->get();
 
         return $this->sendResponse($projects->toArray(), "List Proyek P5 $this->found_msg");
     }
@@ -51,14 +52,20 @@ class P5ProjectController extends BaseController
             }
         }
 
-        return $this->sendResponse($p5_project->load('phases')->toArray(), "Target Capaian Profil $this->added_msg");
+        return $this->sendResponse($p5_project->load('phases')->toArray(), "List Target Capaian Profil $this->added_msg");
     }
 
+    function deletetarget(P5Project $p5_project, P5DimensionSubElementPhase $phase)
+    {
+        $p5_project->phases()->detach($phase);
+
+        return $this->sendResponse($p5_project->load('phases')->toArray(), "Target Capaian Profil $this->deleted_msg");
+    }
     function deleteTargetsBySubelement(P5Project $p5_project, P5DimensionSubElement $subelement)
     {
         $phases = $subelement->phases;
         $p5_project->phases()->detach($phases);
 
-        return $this->sendResponse($p5_project->load('phases')->toArray(), "Target Capaian Profil $this->deleted_msg");
+        return $this->sendResponse($p5_project->load('phases')->toArray(), "List Target Capaian Profil $this->deleted_msg");
     }
 }

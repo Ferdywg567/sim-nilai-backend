@@ -18,7 +18,7 @@ class P5Project extends Model
      */
     public function theme()
     {
-        return $this->belongsTo(P5Theme::class, 'theme_id', 'id');
+        return $this->belongsTo(P5Theme::class, 'p5_theme_id', 'id');
     }
 
     /**

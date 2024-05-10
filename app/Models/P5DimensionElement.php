@@ -20,4 +20,14 @@ class P5DimensionElement extends Model
     {
         return $this->hasMany(P5DimensionSubElement::class, 'element_id', 'id');
     }
+
+    /**
+     * Get the dimension that owns the P5DimensionElement
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function dimension()
+    {
+        return $this->belongsTo(P5Dimension::class, 'dimension_id', 'id');
+    }
 }

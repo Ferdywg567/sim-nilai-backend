@@ -11,7 +11,7 @@ class AuthController extends BaseController
 {
     public function login(LoginRequest $request)
     {
-        $user = User::where('email', $request->email)->first();
+        $user = User::with('role')->where('email', $request->email)->first();
 
         if(!$request->authenticate()) {
             return $this->sendError('Maaf, Email atau Password Anda Salah.');
@@ -20,8 +20,8 @@ class AuthController extends BaseController
         $token = $user->createToken('ApiToken')->plainTextToken;
 
         $response = [
-            'user'      => $user,
-            'token'     => $token
+            'user'  => $user,
+            'token' => $token
         ];
 
         return $this->sendResponse($response, "Selamat Datang, $user->name!");
@@ -36,7 +36,7 @@ class AuthController extends BaseController
 
     public function getUserProfile() {
         $data = [
-            'user' => Auth::user()
+            'user' => Auth::user()->load('role')
         ];
         return $this->sendResponse($data, 'Ini Profil Anda.');
     }
