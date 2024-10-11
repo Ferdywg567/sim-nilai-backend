@@ -14,7 +14,13 @@ class ClassSeeder extends Seeder
     public function run(): void
     {
         StudyClass::create([
-            'name' => "X RPL 1"
+            'guru_id' => 1,
+            'name'    => "X RPL 1"
+        ]);
+
+        StudyClass::create([
+            'guru_id' => 2,
+            'name'    => "X RPL 2"
         ]);
     }
 }

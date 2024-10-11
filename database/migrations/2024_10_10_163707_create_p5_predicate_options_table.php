@@ -11,20 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('p5_groups', function (Blueprint $table) {
+        Schema::create('p5_predicate_options', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('guru_id')->constrained()->cascadeOnDelete();
-            // $table->foreignId('project_id')->constrained()->cascadeOnDelete()->nullable();
+            $table->string('code');
             $table->string('name');
-            $table->string('grade');
-            $table->string('phase');
+            $table->text('desc');
             $table->timestamps();
         });
 
         Schema::table('p5_project_achievements', function (Blueprint $table) {
-            $table->foreignId('p5_group_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('predicate_id')->constrained('p5_predicate_options', 'id')->cascadeOnDelete();
         });
-
     }
 
     /**
@@ -32,10 +29,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('p5_groups');
+        Schema::dropIfExists('p5_predicate_options');
 
         Schema::table('p5_project_achievements', function (Blueprint $table) {
-            $table->dropColumn('p5_group_id');
+            $table->dropColumn('predicate_id');
         });
     }
 };

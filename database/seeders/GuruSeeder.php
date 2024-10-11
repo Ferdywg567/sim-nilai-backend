@@ -17,7 +17,7 @@ class GuruSeeder extends Seeder
         $datas = [
             [
                 'name'    => 'Guru 1',
-                'user_id' => 1,
+                'user_id' => 2,
                 'nip'     => 111111111111,
                 'email'   => 'guru1@gmail.com',
                 'address' => 'Jl. Guru 1',
@@ -28,7 +28,7 @@ class GuruSeeder extends Seeder
             ],
             [
                 'name'    => 'Guru 2',
-                'user_id' => 2,
+                'user_id' => 3,
                 'nip'     => 222222222222,
                 'email'   => 'guru2@gmail.com',
                 'address' => 'Jl. Guru 2',

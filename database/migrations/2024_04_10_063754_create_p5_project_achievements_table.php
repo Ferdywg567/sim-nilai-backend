@@ -12,9 +12,8 @@ return new class extends Migration {
     {
         Schema::create('p5_project_achievements', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->foreignId('p5_project_id')->constrained()->cascadeOnDelete();
-            $table->string('predicate');
+            $table->text('note')->nullable();
             $table->timestamps();
 
             // $predicate = ['MB', 'SeB', 'BSH', 'SaB']; // Mulai Berkembang, Sedang Berkembang, Berkembang Sesuai Harapan, Sangat Berkembang

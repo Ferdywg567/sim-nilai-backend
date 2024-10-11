@@ -1,11 +1,19 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\P5EvaluationController;
 use App\Http\Controllers\P5GroupController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('login', [AuthController::class, 'login']);
+Route::get('test/get', function () {
+    echo 'success';
+});
+Route::post('test/post', function (Request $request) {
+    // echo 'success';
+    dd($request);
+});
 
 //* ====================== AUTH ROUTES =====================
 
@@ -22,4 +30,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('/{p5_group}', [P5GroupController::class, 'show']);
         Route::get('/{p5_group}/projects', [P5GroupController::class, 'getProjects']);
     });
+
+    Route::get('predicate-options', [P5EvaluationController::class, 'getPredicateOptions']);
 });

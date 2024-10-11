@@ -34,6 +34,36 @@ class StudentSeeder extends Seeder
                 'dob'            => Carbon::now()->subYears(12),
                 'pob'            => 'Surabaya',
                 'gender'         => 'L',
+            ],
+            [
+                'study_class_id' => 2,
+                'name'           => 'Murid 3',
+                'nis'            => 3333333333,
+                'email'          => 'murid3@gmail.com',
+                'address'        => 'Jl. Murid 3',
+                'dob'            => Carbon::now()->subYears(11),
+                'pob'            => 'Surabaya',
+                'gender'         => 'P',
+            ],
+            [
+                'study_class_id' => 2,
+                'name'           => 'Murid 4',
+                'nis'            => 4444444444,
+                'email'          => 'murid4@gmail.com',
+                'address'        => 'Jl. Murid 4',
+                'dob'            => Carbon::now()->subYears(11),
+                'pob'            => 'Surabaya',
+                'gender'         => 'L',
+            ],
+            [
+                'study_class_id' => 2,
+                'name'           => 'Murid 5',
+                'nis'            => 5555555555,
+                'email'          => 'murid5@gmail.com',
+                'address'        => 'Jl. Murid 5',
+                'dob'            => Carbon::now()->subYears(11),
+                'pob'            => 'Surabaya',
+                'gender'         => 'L',
             ]
         ];
 

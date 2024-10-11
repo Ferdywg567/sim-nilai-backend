@@ -23,10 +23,12 @@ class P5ProjectController extends BaseController
 
         return $this->sendResponse($p5_project->toArray(), "Data Proyek P5 $this->created_msg");
     }
+
     function show(P5Project $p5_project)
     {
         return $this->sendResponse($p5_project->toArray(), "Data Proyek P5 $this->found_msg");
     }
+
     function update(P5ProjectRequest $request, P5Project $p5_project)
     {
         $p5_project->update($request->all());

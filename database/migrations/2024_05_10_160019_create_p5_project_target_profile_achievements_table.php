@@ -14,6 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('p5_project_id')->constrained()->cascadeOnDelete();
             $table->foreignId('p5_phase_id')->constrained('p5_dimension_sub_element_phases')->cascadeOnDelete();
+            // $table->foreignId('subelement_id')->constrained('p5_dimension_sub_elements')->cascadeOnDelete();
+            // $table->foreignId('element_id')->constrained('p5_dimension_elements')->cascadeOnDelete();
+            // $table->foreignId('dimension_id')->constrained('p5_dimensions')->cascadeOnDelete();
             $table->timestamps();
         });
     }

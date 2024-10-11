@@ -19,10 +19,13 @@ class DatabaseSeeder extends Seeder
             P5Seeder::class,
             SubjectSeeder::class,
             LearningObjectiveSeeder::class,
+            GuruSeeder::class,
             ClassSeeder::class,
             StudentSeeder::class,
-            GuruSeeder::class,
             TeachingSeeder::class,
+            P5PredicateOptionSeeder::class,
+            // P5ProjectSeeder::class,
+            // P5GroupSeeder::class,
             // ExtraSeeder::class,
         ]);
     }

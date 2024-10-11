@@ -15,12 +15,12 @@ class TeachingSeeder extends Seeder
     {
         $datas = [
             [
-                'user_id'    => 2, // guru 1
+                'guru_id'    => 1, // guru 1
                 'subject_id' => 1, // Matematika
                 'study_class_id' => 1, // X RPL 1
             ],
             [
-                'user_id'    => 3, // guru 2
+                'guru_id'    => 2, // guru 2
                 'subject_id' => 1, // Matematika
                 'study_class_id' => 1, // X RPL 1
             ],

@@ -11,7 +11,7 @@ use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\SubjectLearningObjectiveController;
 use Illuminate\Support\Facades\Route;
 
-Route::group(['middleware' => ['auth:sanctum', 'role:admin']], function () {
+Route::group(['middleware' => ['auth:sanctum', 'role:admin'], 'prefix' => 'admin'], function () {
     Route::group(['prefix' => 'p5-dimensions', 'as' => 'p5-dimension.'], function () {
         Route::get('/', [P5DimensionController::class, 'getDimensions']);
     });

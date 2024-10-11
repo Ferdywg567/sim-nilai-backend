@@ -18,10 +18,6 @@ class P5GroupController extends BaseController
     {
         $groups = P5Group::with('students', 'coordinator', 'projects.theme');
 
-        if (Auth::user()->role_id == 2) { // guru
-            $groups->where('guru_id', Auth::id());
-        }
-
         return $this->sendResponse($groups->get()->toArray(), "List Kelompok P5 $this->found_msg");
     }
 

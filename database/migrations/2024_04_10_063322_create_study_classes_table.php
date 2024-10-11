@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('study_classes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('guru_id')->nullable()->constrained()->nullOnDelete();
             $table->string('name');
             $table->timestamps();
         });

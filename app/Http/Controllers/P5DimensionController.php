@@ -19,7 +19,8 @@ class P5DimensionController extends BaseController
 
     function getPhases(Request $request)
     {
-        $phases = P5DimensionSubElementPhase::with('subElement.element.dimension')->where('phase', $request->phase);
+        $phases = P5DimensionSubElementPhase::with('subElement.element.dimension');
+        // ->where('phase', $request->phase)
 
         if ($request->notIn) {
             $phases->whereNotIn('id', $request->notIn);

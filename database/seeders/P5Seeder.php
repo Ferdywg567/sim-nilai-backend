@@ -368,9 +368,6 @@ class P5Seeder extends Seeder
             [
                 'name' => 'Kebekerjaan',
             ],
-            [
-                'name' => 'Kewirausahaan',
-            ],
         ];
 
         foreach ($dimensions as $dimension) {
@@ -394,7 +391,13 @@ class P5Seeder extends Seeder
 
                     $p5_subelement = $p5_element->subs()->create($sub);
 
-                    $p5_subelement->phases()->create($phases[0]);
+                    foreach ($phases as $phase) {
+                        // $phase['subelement_id'] = $p5_subelement->id;
+                        // $phase['element_id']    = $p5_element->id;
+                        // $phase['dimension_id']  = $p5_dimension->id;
+
+                        $p5_subelement->phases()->create($phase);
+                    }
                 }
             }
         }

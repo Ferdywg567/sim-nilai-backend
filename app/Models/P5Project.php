@@ -11,6 +11,10 @@ class P5Project extends Model
 
     protected $guarded = [];
 
+    // Pembuatan Keripik Singkong Aneka Rasa
+    // Membangun Jiwa Wirausaha Sejak Dini
+
+
     /**
      * Get the theme that owns the P5Project
      *

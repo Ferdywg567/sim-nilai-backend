@@ -38,7 +38,18 @@ class P5Group extends Model
      */
     public function projects()
     {
-        return $this->belongsToMany(P5Project::class);
+        return $this->belongsToMany(P5Project::class, 'p5_group_p5_project', 'p5_group_id', 'p5_project_id', 'id', 'id');
+        // return $this->belongsToMany(P5Project::class);
+    }
+
+    /**
+     * The latest project that belong to the P5Group
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasOne
+     */
+    public function latestProject()
+    {
+        return $this->projects()->latest();
     }
 
     function setCoordinator(Guru $guru)

@@ -26,6 +26,12 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
+            'name'    => 'Guru 2',
+            'role_id' => 2,
+            'email'   => 'guru2@gmail.com',
+        ]);
+
+        User::factory()->create([
             'role_id' => 2
         ]);
     }
